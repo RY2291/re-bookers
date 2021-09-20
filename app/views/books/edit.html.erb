@@ -1,4 +1,18 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+
 <h1>Editing Book</h1>
+
+<% if @book.errors.any? %>
+  <p><%= @book.errors.count %>error prohibited this book from beiing saved:</p>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
 
 <%= form_with model: @book, local:true do |f| %>
   <label>Title</label>
